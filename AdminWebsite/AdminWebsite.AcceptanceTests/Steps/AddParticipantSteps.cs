@@ -161,13 +161,17 @@ namespace AdminWebsite.AcceptanceTests.Steps
         }
 
         private void SetParty(string party)
-        {
+        { Thread.Sleep((3000));
             _commonSharedSteps.WhenTheUserSelectsTheOptionFromTheDropdown(_browsers[_c.CurrentUser].Driver, AddParticipantsPage.PartyDropdown, Party.FromString(party).Name);
         }
 
         private void SetRole(string role)
-        {
-            _commonSharedSteps.WhenTheUserSelectsTheOptionFromTheDropdown(_browsers[_c.CurrentUser].Driver, AddParticipantsPage.RoleDropdown, PartyRole.FromString(role).Name);
+        { Thread.Sleep((3000));
+            //Driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+            //elem = WebDriverWait(driver, 30).until();
+                _commonSharedSteps.WhenTheUserSelectsTheOptionFromTheDropdown(_browsers[_c.CurrentUser].Driver,
+                    AddParticipantsPage.RoleDropdown, PartyRole.FromString(role).Name);
+
         }
 
         private UserAccount CreateNewUser(string role)
